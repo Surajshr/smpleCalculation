@@ -11,19 +11,26 @@ void main() {
           title: Text('This is example'),
         ),
         body: getListView(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            debugPrint("FAB click");
+          },
+          child: Icon(Icons.add),
+          tooltip: 'Add one more Items',
+        ),
       ),
     ),
   );
 }
-void showSnackBar(BuildContext context , String item){
+
+void showSnackBar(BuildContext context, String item) {
   var snackBar = SnackBar(
-      content: Text("You just Tapped $item"),
+    content: Text("You just Tapped $item"),
     action: SnackBarAction(
-      label: "UNDO",
-      onPressed:(){
-        debugPrint("Performing dummy UNDO operation");
-      }
-    ),
+        label: "UNDO",
+        onPressed: () {
+          debugPrint("Performing dummy UNDO operation");
+        }),
   );
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
