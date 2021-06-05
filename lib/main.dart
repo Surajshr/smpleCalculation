@@ -15,6 +15,18 @@ void main() {
     ),
   );
 }
+void showSnackBar(BuildContext context , String item){
+  var snackBar = SnackBar(
+      content: Text("You just Tapped $item"),
+    action: SnackBarAction(
+      label: "UNDO",
+      onPressed:(){
+        debugPrint("Performing dummy UNDO operation");
+      }
+    ),
+  );
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
 
 List<String> getListElements() {
   var items = List<String>.generate(100, (counter) => "Items $counter");
@@ -28,7 +40,7 @@ Widget getListView() {
       leading: Icon(Icons.arrow_right),
       title: Text(listItems[index]),
       onTap: () {
-        debugPrint('you tapped $listItems[index]');
+        showSnackBar(context, listItems[index]);
       },
     );
   });
